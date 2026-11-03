@@ -1,0 +1,49 @@
+In a reactor the reaction  A + B = C reaches equilibrium. Initial concentration are A=1.5 ,B=1.0 AND C=0 mol/L of C is formed , kc=x/((1.5-x)(1-x)), which rearrange the quadratic equaction Kc.x2-(2.5Kc+1).X + 1.5kC =0  i want to write python programe 
+import math
+
+A0 = 1.5
+B0 = 1.0
+
+raw_kc = input("Enter Kc: ")
+print(f"Raw input: {raw_kc!r}")
+print(f"Raw input type: {type(raw_kc).__name__}")
+
+try:
+    kc = float(raw_kc)
+except ValueError:
+    print("Invalid input: please enter Kc as a number, such as 4 or 0.5.")
+else:
+    print(f"Converted value: {kc}")
+    print(f"Converted value type: {type(kc).__name__}")
+
+    if not math.isfinite(kc):
+        print("Invalid Kc: please enter a finite number.")
+    elif kc <= 0:
+        print("Invalid Kc: Kc must be greater than 0.")
+    else:
+        a = kc
+        b = -(2.5 * kc + 1)
+        c = 1.5 * kc
+
+        discriminant = b**2 - 4 * a * c
+        print(f"Discriminant: {discriminant:.4f}")
+
+        root1 = (-b + math.sqrt(discriminant)) / (2 * a)
+        root2 = (-b - math.sqrt(discriminant)) / (2 * a)
+        print(f"Root 1: {root1:.4f}")
+        print(f"Root 2: {root2:.4f}")
+
+        physical_roots = [root for root in (root1, root2) if 0 <= root <= B0]
+
+        if physical_roots:
+            x = physical_roots[0]
+            A = A0 - x
+            B = B0 - x
+            C = x
+            print(f"Equilibrium extent x: {x:.4f} mol/L")
+            print("Equilibrium concentrations:")
+            print(f"A = {A:.4f} mol/L")
+            print(f"B = {B:.4f} mol/L")
+            print(f"C = {C:.4f} mol/L")
+        else:
+            print("No root satisfies the physical constraint 0 <= x <= 1.0.")

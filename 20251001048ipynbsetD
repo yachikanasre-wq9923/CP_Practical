@@ -1,0 +1,2 @@
+In a reactor the reaction  A + B = C reaches equilibrium. Initial concentration are A=1.5 ,B=1.0 AND C=0 mol/L of C is formed , kc=x/((1.5-x)(1-x)), which rearrange the quadratic equaction Kc.x2-(2.5Kc+1).X + 1.5kC =0
+read Kc using input (), prints the data type of the raw input and of the converted value , and shoe a clear message (no crash) if the text is not a number or if kc less than or equal to 0 ; Kc=4, Kc=0.5, Kc=abc and Kc=-2
